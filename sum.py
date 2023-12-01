@@ -15,7 +15,6 @@ sum = 0
 for line in Lines:
     search = re.findall(r"\d",line)
     combine = str(search[0]) + str(search[-1])
-    print(combine)
     sum = sum + int(combine)
 
 print("The Total Calibration is " + str(sum))
