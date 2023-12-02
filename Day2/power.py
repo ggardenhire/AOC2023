@@ -21,16 +21,15 @@ def createGameDict():
                 "Greens": green_total
             }
             temp_games_list.append(temp_games_dict)
-            print(temp_games_list)
         red = 0
         green = 0
         blue = 0
         for temp in temp_games_list:
-            if int(temp['Reds']) > int(red):
+            if int(temp['Reds']) > int(red) and int(temp['Reds']) != 0:
                 red = int(temp['Reds'])
-            if int(temp['Blues']) > int(blue):
+            if int(temp['Blues']) > int(blue) and int(temp['Blues']) != 0:
                 blue = int(temp['Blues'])
-            if int(temp['Greens']) > int(green):
+            if int(temp['Greens']) > int(green) and int(temp['Greens']) != 0:
                 green = int(temp['Greens'])
         games_dict = {
             "ID": id,
@@ -43,22 +42,11 @@ def createGameDict():
     return games_list
 
 def output_sum(games_list):
-    red = 12
-    green = 13
-    blue = 14
     sum = 0
 
     for item in games_list:
-        flag = True
-        if item["Blues"] > blue:
-            flag = False
-        if item["Reds"] > red:
-            flag = False
-        if item["Greens"] > green:
-            flag = False
-        if flag:
-            sum = sum + int(item["ID"])
-
+        trip = item["Blues"]*item["Greens"]*item["Reds"]
+        sum = sum + trip
     print("The Sum Is " + str(sum))
     
          
@@ -67,5 +55,4 @@ def output_sum(games_list):
 
 if __name__ == "__main__":
   games_list = createGameDict()
-  print(games_list)
   output_sum(games_list)
